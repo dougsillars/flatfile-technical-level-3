@@ -6,5 +6,6 @@ CREATE TABLE sections (
 CREATE TABLE cards (
     id serial PRIMARY KEY,
     title text NOT NULL,
+    description text,
     section_id serial
 );

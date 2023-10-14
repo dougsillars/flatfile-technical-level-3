@@ -32,19 +32,20 @@ function App() {
     })
   })
 
-  const onCardSubmit = (sectionId: number, title: string) => {
+  const onCardSubmit = (sectionId: number, title: string, description: string) => {
     axios({
       method: 'post',
       url: 'http://localhost:3001/cards',
-      data: { sectionId, title }
+      data: { sectionId, title, description }
     }).then((response) => {
       let sectionsClone: SectionI[] = [...sections]
       for (let i = 0; i < sectionsClone.length; i++) {
         let section: SectionI = sectionsClone[i]
-        if (section.id == sectionId) {
+        if (section.id === sectionId) {
           section.cards.push({
             id: response.data.id,
             title: response.data.title,
+            description: response.data.description,
             section_id: sectionId
           })
           setSections(sectionsClone)

@@ -29,6 +29,7 @@ const Section = ({
 }) => {
   const [isTempCardActive, setIsTempCardActive] = useState(false)
   const [cardText, setCardText] = useState('')
+  const [cardDescription, setcardDescription] = useState('')
 
   return (
     <Wrapper>
@@ -52,6 +53,13 @@ const Section = ({
                     setCardText(e.target.value)
                   }
                 />
+                <ListCardTextArea
+                placeholder='Enter a Description for the new card'
+                  onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                    setcardDescription(e.target.value)
+                  }
+                />
+                
               </ListCardDetails>
             </ListCardComponent>
             <SubmitCardButtonDiv>
@@ -62,7 +70,7 @@ const Section = ({
                   e.preventDefault()
 
                   if (cardText) {
-                    onCardSubmit(id, cardText)
+                    onCardSubmit(id, cardText, cardDescription)
                   }
 
                   setIsTempCardActive(false)

@@ -13,12 +13,19 @@ const CardContainer = styled.div`
 `
 
 const CardTitle = styled.div``
+interface CardProps {
+  card: { id: number, section_id: number, title: string, description: string };
+  onEditClick: (
+  ) => void;
+}
 
-const Card = ({ card: { title,description } }: any) => (
+const Card: React.FC<CardProps> = ({ card: { id,title,description }, onEditClick }) => (
   <CardContainer className='card'>
     <CardTitle>Card: {title}</CardTitle>
     <p>Description: {description}</p>
+    <button onClick={onEditClick}>Edit</button>
   </CardContainer>
+  
 )
 
 export default Card

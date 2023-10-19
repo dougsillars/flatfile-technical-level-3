@@ -3,4 +3,7 @@ export default interface CardI {
   title: string
   description: string
   section_id: number
+  image1: string
+  image2: string
+  image3: string
 }

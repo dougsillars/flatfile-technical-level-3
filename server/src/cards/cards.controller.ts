@@ -18,6 +18,7 @@ export class CardsController {
   updateCard(@Body() card: { id: number; sectionId: number; title: string; description:string; image1: string; image2:string; image3:string }): Promise<CardEntity> {
     this.logger.log('PUT /cards')
 
+
     return this.cardsService.update(card)
   }
 }

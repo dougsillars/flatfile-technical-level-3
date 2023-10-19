@@ -48,11 +48,12 @@ function App() {
     })
   })
 
-  const onCardSubmit = (sectionId: number, title: string, description: string) => {
+  const onCardSubmit = (sectionId: number, title: string, description: string, image1:string, image2:string, image3:string) => {
+    console.log('submit new card', title)
     axios({
       method: 'post',
       url: 'http://localhost:3001/cards',
-      data: { sectionId, title, description }
+      data: { sectionId, title, description, image1, image2, image3 }
     }).then((response) => {
       let sectionsClone: SectionI[] = [...sections]
       for (let i = 0; i < sectionsClone.length; i++) {
@@ -62,7 +63,11 @@ function App() {
             id: response.data.id,
             title: response.data.title,
             description: response.data.description,
-            section_id: sectionId
+            section_id: sectionId, 
+            image1: response.data.image1,
+            image2: response.data.image2,
+            image3: response.data.image3
+
           })
           setSections(sectionsClone)
         }
@@ -75,25 +80,18 @@ function App() {
     const sectionId = card.section_id
     const title = card.title
     const description = card.description
+    const image1 = card.image1
+    const image2 = card.image2
+    const image3 = card.image3
+    console.log('save card', card)
     //update the card
     axios({
       method: 'put',
       url: 'http://localhost:3001/cards',
-      data: { id, sectionId, title, description }
+      data: { id, title, description, sectionId, image1,image2, image3 }
     }).then((response) => {
-      let sectionsClone: SectionI[] = [...sections]
-      for (let i = 0; i < sectionsClone.length; i++) {
-        let section: SectionI = sectionsClone[i]
-        if (section.id === sectionId) {
-          section.cards.push({
-            id: response.data.id,
-            title: response.data.title,
-            description: response.data.description,
-            section_id: sectionId
-          })
-          setSections(sectionsClone)
-        }
-      }
+      console.log("response", response)
+      
     })
   }
 

@@ -14,7 +14,13 @@ const CardContainer = styled.div`
 
 const CardTitle = styled.div``
 interface CardProps {
-  card: { id: number, section_id: number, title: string, description: string };
+  card: { id: number, 
+          section_id: number, 
+          title: string, 
+          description: string , 
+          image1: string, 
+          image2: string, 
+          image3:string};
   onEditClick: (
   ) => void;
 }

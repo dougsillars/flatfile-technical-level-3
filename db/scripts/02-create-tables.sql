@@ -6,9 +6,9 @@ CREATE TABLE sections (
 CREATE TABLE cards (
     id serial PRIMARY KEY,
     title text NOT NULL,
-    description text,
+    description TEXT,
     section_id serial, 
-    image1 text, 
-    image2 text, 
-    image3 text
+    image1 TEXT, 
+    image2 TEXT, 
+    image3 TEXT
 );
